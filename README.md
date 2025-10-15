@@ -1,8 +1,10 @@
 # ROCK PAPER SCISSORS
 
+Rock Paper Scissors, classical game done in JavaScript.
 
-
-
+- I used a try... and catch...  block
+- Switch and if statements for conditional block
+- Used objects to store values used often
 
 ## Plan / Pseudocode
 

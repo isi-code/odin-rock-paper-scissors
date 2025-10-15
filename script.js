@@ -1,8 +1,13 @@
-const humanScore = 0 
-const computerScore = 0
+let humanScore = 0 
+let computerScore = 0
 
 const options = {"rock":'🪨', "paper":'📃', "scissors" :'✂️'}
-const stopPlaying = false
+const winConditions = {
+                        '🪨':{'📃':false,'🪨':false,'✂️':true},
+                        '📃':{'📃':false,'🪨':true,'✂️':false},
+                        '✂️':{'📃':true,'🪨':false,'✂️':false},
+                    }
+let stopPlaying = false
 
 function getComputerChoice(){
     // Get option object keys as an array
@@ -32,4 +37,27 @@ function getHumanChoice(){
     }
 }
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice){
+        return "It's a draw"
+    }
+    else if (winConditions[humanChoice][computerChoice]){
+        humanScore++
+        return `Point for human! - Human:${humanChoice} X Computer:${computerChoice}`
+    }else{
+        computerScore++
+        return `Point for Computer! - Human: ${humanChoice} X Computer:${computerChoice}`
+    }
+}
 
+while(!stopPlaying){
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+
+    console.log(playRound(humanSelection, computerSelection));
+    
+    if( humanScore >= 5 || computerScore >= 5) stopPlaying = true;
+}
+
+if (humanScore > computerScore) console.log("Human Won!!")
+else console.log("Computer Won!!")
