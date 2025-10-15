@@ -5,10 +5,22 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     width:90vw;
     max-width: 800px;
-    height: auto;
-    min-height: 20rem;
+    height: 400px;
+    min-height: 30rem;
     margin: auto;
     text-align: center;
+    padding: 15px;
+    overflow-y: scroll;
+}
+
+span.score {
+    color: greenyellow;
+}
+
+span.winner {
+    color:rgb(241, 184, 28);
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 #playRound {

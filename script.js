@@ -35,9 +35,23 @@ function playRound(humanChoice) {
 }
 
 const display = document.getElementById("gameDisplay");
+let displayScore = document.createElement("span");
+let displayWinner = document.createElement("span");
+
+displayScore.setAttribute("class","score");
+displayWinner.setAttribute("class","winner")
+
+display.appendChild(displayScore).textContent = "";
+
 document.getElementById("playRound").addEventListener("click", (e) => { 
-    display.appendChild(document.createElement("span.score"))
+    
      if (e.target.tagName === "BUTTON") {
-        display.innerHTML += `<span>${playRound(e.target.outerText)}</span><br>`;
+        display.innerHTML += `<p>${playRound(e.target.outerText)}</p>`;
+        display.appendChild(displayScore).innerHTML = `<p>The score is human: ${humanScore} - computer: ${computerScore}</p>`;
     }
-})
+    if (humanScore >= 5 || computerScore >= 5){ 
+        if(humanScore >= 5 && humanScore > computerScore) display.appendChild(displayWinner).innerHTML =  "<p>Human wins!!! "+ `human: ${humanScore} - computer: ${computerScore}</p>`;
+        if(computerScore >= 5 && computerScore > humanScore) display.appendChild(displayWinner).innerHTML = "<p>Computer wins!!! "+ `computer: ${computerScore} - human: ${humanScore}</p>`;
+    }
+
+});
