@@ -1,5 +1,5 @@
-let humanScore = 0 
-let computerScore = 0
+let humanScore = 0;
+let computerScore = 0;
 
 const options = {"rock":'🪨', "paper":'📃', "scissors" :'✂️'}
 const winConditions = {
@@ -19,45 +19,25 @@ function getComputerChoice(){
     return options[choice]
 }
 
-function getHumanChoice(){
-    const choice = prompt("Choose Rock, Paper, or Scissors: ").toLowerCase();
-    try{
-        switch(choice){
-            case "rock":
-                return options.rock
-            case "paper":
-                return options.paper
-            case "scissors":
-                return options.scissors
-            default:
-                throw new Error(`${choice} is an invalid input`);
-        }
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    let computerChoice = getComputerChoice();
+    
     if (humanChoice === computerChoice){
         return "It's a draw"
     }
     else if (winConditions[humanChoice][computerChoice]){
         humanScore++
-        return `Point for human! - Human:${humanChoice} X Computer:${computerChoice}`
+        return `Point for human! - Human:${humanChoice} beats Computer:${computerChoice}`
     }else{
         computerScore++
-        return `Point for Computer! - Human: ${humanChoice} X Computer:${computerChoice}`
+        return `Point for Computer! - Human: ${humanChoice} is beaten by Computer:${computerChoice}`
     }
 }
 
-while(!stopPlaying){
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    console.log(playRound(humanSelection, computerSelection));
-    
-    if( humanScore >= 5 || computerScore >= 5) stopPlaying = true;
-}
-
-if (humanScore > computerScore) console.log("Human Won!!")
-else console.log("Computer Won!!")
+const display = document.getElementById("gameDisplay");
+document.getElementById("playRound").addEventListener("click", (e) => { 
+    display.appendChild(document.createElement("span.score"))
+     if (e.target.tagName === "BUTTON") {
+        display.innerHTML += `<span>${playRound(e.target.outerText)}</span><br>`;
+    }
+})

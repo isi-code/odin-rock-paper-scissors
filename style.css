@@ -1,0 +1,23 @@
+
+#gameDisplay{
+    background-color: black;
+    color:white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width:90vw;
+    max-width: 800px;
+    height: auto;
+    min-height: 20rem;
+    margin: auto;
+    text-align: center;
+}
+
+#playRound {
+    text-align: center;
+}
+
+#playRound > button{
+    margin:20px 10px;
+    padding: 10px;
+    font-size: 2rem;
+    cursor:pointer;
+}
